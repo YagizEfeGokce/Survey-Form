@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Survey Form</title>
+</head>
+
+<body>
+    <h1 id="title">Survey Form</h1>
+    <form id="survey-form">
+        <label id="name-label" for="name">
+            Full Name:
+            <input required id="name" name="name" type="text" placeholder="Bob Black">
+        </label>
+
+        <label id="email-label" for="email">
+            Email:
+            <input required id="email" name="email" type="email" placeholder="example@gmail.com">
+        </label>
+
+        <label id="number-label" for="number">
+            Age:
+            <input required type="number" id="number" name="age" min="13" max="120" placeholder="13">
+        </label>
+
+        <label for="dropdown">Device You Currently use:</label></label>
+        <select id="dropdown" name="example">
+            <option value="A">PC</option>
+            <option value="B">Phone</option>
+            <option value="C">Tablet</option>
+        </select>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <label for="gender-male">
+                <input required type="radio" id="gender-male" name="gender" value="male"> Male
+            </label>
+            <label for="gender-female">
+                <input required type="radio" id="gender-female" name="gender" value="female"> Female
+            </label>
+        </fieldset>
+
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" name="comments"></textarea>
+
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <script>
+
+        const form = document.getElementById('survey-form');
+        const ageInput = document.getElementById('number');
+
+        form.addEventListener('submit', function (event) {
+
+            const age = Number(ageInput.value);
+            console.log('Age entered:', age);
+
+            if (age < 13 || age > 120) {
+
+                event.preventDefault();
+
+                alert('Please enter a valid age between 13 and 120.');
+            }
+        });
+    </script>
+</body>
+
+</html>
